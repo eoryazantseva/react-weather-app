@@ -1,9 +1,16 @@
 .Weather {
   font-family: Arial, Helvetica, sans-serif;
-  color: rgb(135, 135, 135);
+  color: rgb(60, 60, 60);
   padding: 16px;
-  border-radius: 4px;
-  border: 1px solid #dadde1;
+  border-radius: 10px;
+  border: 1px solid #06617a;
+  background: white;
+}
+.Weather .form-control {
+  border-color: #06617a;
+}
+.btn-primary {
+  background-color: #06617a;
 }
 
 .Weather h1 {

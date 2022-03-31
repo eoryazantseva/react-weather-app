@@ -1,3 +1,6 @@
+body {
+  background: #fde9df;
+}
 .App {
   max-width: 600px;
   margin: 30px auto;
