@@ -16,6 +16,10 @@ function App() {
             rel="noopener noreferrer"
           >
             open-sourced on Github
+          </a>{" "}
+          and{" "}
+          <a href="https://helpful-bonbon-4ff2de.netlify.app">
+            hosted on Netlify
           </a>
         </footer>
       </div>
