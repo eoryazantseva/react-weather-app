@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
+import FormattedDate from "./FormattedDate";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -10,7 +11,7 @@ export default function Weather(props) {
       ready: true,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
-      date: "Wednesday 07.00",
+      date: new Date(response.data.dt * 1000),
       iconUrl: "https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png",
       wind: response.data.wind.speed,
       city: response.data.name,
@@ -42,7 +43,9 @@ export default function Weather(props) {
         </form>
         <h1>{weatherData.city}</h1>
         <ul>
-          <li>{weatherData.date}</li>
+          <li>
+            <FormattedDate date={weatherData.date} />
+          </li>
           <li className="text-capitalize">{weatherData.description}</li>
         </ul>
         <div className="row">
@@ -53,14 +56,17 @@ export default function Weather(props) {
                 alt="Mostly Cloudy"
               />
             </div>{" "}
-            <span className="temperature"> 30</span>{" "}
+            <span className="temperature">
+              {" "}
+              {Math.round(weatherData.temperature)}
+            </span>{" "}
             <div className="unit">°C</div>
           </div>
           <div className="col-6">
             <ul>
               <li>Precipitation: 15%</li>
-              <li>Humidity: {weatherData.humidity}</li>
-              <li>Wind: {weatherData.wind}</li>
+              <li>Humidity: {weatherData.humidity}%</li>
+              <li>Wind: {Math.round(weatherData.wind)} km/h</li>
             </ul>
           </div>
         </div>
@@ -68,7 +74,6 @@ export default function Weather(props) {
     );
   } else {
     const apiKey = "44d61b2c8d129fbac42ddac3d5a2004b";
-    let city = "Brisbane";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 
