@@ -14,10 +14,7 @@ export default function WeatherInfo(props) {
       <div className="row">
         <div className="col-6">
           <div className="helper">
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-              alt="Mostly Cloudy"
-            />
+            <img src={props.data.iconUrl} alt="Mostly Cloudy" />
           </div>{" "}
           <span className="temperature">
             {" "}
