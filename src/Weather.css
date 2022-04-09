@@ -37,6 +37,7 @@
   font-weight: 400;
   color: rgb(33, 33, 33);
   font-size: 64px;
+  display: inline-block;
 }
 .Weather .helper {
   display: inline-block;
